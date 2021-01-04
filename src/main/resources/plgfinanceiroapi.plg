@@ -18,6 +18,12 @@
 	
 	+ DEMANDAS (As demandas deverao seguir o padrao: <SEGUNDO><ANO><MINUTO><MES><DIA><HORA>, por exemplo: PLGFINANCEIROAPI-33202004123113)
 		
+		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
+		
+		-- [PENDENTE] PLGFINANCEIROAPI-57202047010415
+		
+			- Implementando endpoint de remoção de dados
+		
 		-- [FINALIZADO] PLGFINANCEIROAPI-51202058010414
 		
 			- Responsável por implementar refactory para os controllers
@@ -44,7 +50,7 @@
 		-- Dados de versionamento
 		
 			git config --global user.email "nihonium@outlook.com.br"
-			git config --global user.name "Nihonium"
+			git config --global user.name "Repository Nihonium"
 			
 			-- URL: https://github.com/repositorynihonium/PLGFINANCEIROAPI.git
 			
@@ -58,7 +64,7 @@
 			
 		-- Comandos para versionar o projeto
 			git add *
-			git commit -a -m $'PLGFINANCEIROAPI-51202058010414 \n - Responsável por implementar refactory para os controllers'
+			git commit -a -m $'PLGFINANCEIROAPI-57202047010415 \n - Implementando endpoint de remoção de dados'
 			git push
 			
 	+ COMANDOS

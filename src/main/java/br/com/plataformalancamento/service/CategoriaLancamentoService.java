@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.plataformalancamento.domain.CategoriaLancamentoDomain;
-import br.com.plataformalancamento.exception.ObjetoNaoEncontradoException;
 import br.com.plataformalancamento.repository.CategoriaLancamentoRepository;
 
 @Service
@@ -36,7 +35,13 @@ public class CategoriaLancamentoService implements Serializable {
 	@Transactional
 	public CategoriaLancamentoDomain recuperarCategoriaLancamento(Long codigo) {
 		Optional<CategoriaLancamentoDomain> categoriaLancamentoDomainOptional = categoriaLancamentoRepository.findById(codigo);
-		return categoriaLancamentoDomainOptional.orElseThrow( () -> new ObjetoNaoEncontradoException("O objeto com o código de identificação " + codigo + " não pode ser encontrado!"));
+//		return categoriaLancamentoDomainOptional.orElseThrow( () -> new ObjetoNaoEncontradoException("O objeto com o código de identificação " + codigo + " não pode ser encontrado!"));
+		return categoriaLancamentoDomainOptional.get();
+	}
+	
+	public void removerCategoriaLancamento(Long codigo) {
+		CategoriaLancamentoDomain categoriaLancamentoDomainRetorno = this.recuperarCategoriaLancamento(codigo);
+		categoriaLancamentoRepository.delete(categoriaLancamentoDomainRetorno);
 	}
 
 }

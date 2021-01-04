@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -40,5 +42,13 @@ public class TratarException extends ResponseEntityExceptionHandler {
 		List<ErroException> erroExceptionList = ErroException.criarListagemErros(methodArgumentNotValidException.getBindingResult(), messageSource);
 		return handleExceptionInternal(methodArgumentNotValidException, erroExceptionList, httpHeaders, HttpStatus.BAD_REQUEST, webRequest);
 	}
+	
+	/**
+	 * Captura erros, por exemplo, da validacao de campos nao encontrados
+	 * TODO Encaminhar mensagem tratada para o <b>frontent</b>
+	 */
+	@ExceptionHandler({ RuntimeException.class })
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public void handleRuntimeException(RuntimeException runtimeException) { }
 	
 }
