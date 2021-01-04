@@ -20,6 +20,17 @@
 	
 		-- PLGFINANCEIROAPI-33202004123113
 			- Responsável pela versionamento inicial do projeto
+			
+		-- Configurar Flyway ao executar projeto em Producao
+		
+			-- Criar arquivos na pasta
+				/resources/db/migration/V001__CREATE_TABLE_TB-CATEGORIA-PRODUTO.sql
+			
+			-- Importar dependecia no POM
+				<dependency>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-core</artifactId>
+				</dependency>
 	
 	+ VERSIONAMENTO
 		
@@ -52,5 +63,14 @@
 		-- Procurar processo pelo número da porta
 			lsof -w -n -i tcp:8080
 			kill -9 15769
-			
-			
+		
+		-- Desisntalar DBEAVER
+		dpkg -l | grep dbeaver
+		sudo dpkg -r dbeaver-ce
+		
+	+ ERROS CONHECIDOS
+	
+		-- Column count of mysql.proc is wrong. Expected 21, found 20. Created with MariaDB 100108, now running 100417. Please use mysql_upgrade to fix this error
+			sudo /opt/lampp/lampp stop
+			/opt/lampp/bin/mysql_upgrade
+			sudo /opt/lampp/lampp start
