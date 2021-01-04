@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import br.com.plataformalancamento.domain.CategoriaLancamentoDomain;
@@ -46,6 +47,9 @@ public class CategoriaLancamentoService implements Serializable {
 	
 	public CategoriaLancamentoDomain atualizarCategoriaLancamento(Long codigo, CategoriaLancamentoDomain categoriaLancamentoDomain) {
 		CategoriaLancamentoDomain categoriaLancamentoDomainRetorno = this.recuperarCategoriaLancamento(codigo);
+		if(categoriaLancamentoDomainRetorno == null) {
+			throw new EmptyResultDataAccessException(1);
+		}
 		BeanUtils.copyProperties(categoriaLancamentoDomain, categoriaLancamentoDomainRetorno, "codigo");
 		return this.categoriaLancamentoRepository.save(categoriaLancamentoDomainRetorno);
 	}
