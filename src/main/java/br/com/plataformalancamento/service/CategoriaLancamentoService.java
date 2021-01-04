@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,13 +36,18 @@ public class CategoriaLancamentoService implements Serializable {
 	@Transactional
 	public CategoriaLancamentoDomain recuperarCategoriaLancamento(Long codigo) {
 		Optional<CategoriaLancamentoDomain> categoriaLancamentoDomainOptional = categoriaLancamentoRepository.findById(codigo);
-//		return categoriaLancamentoDomainOptional.orElseThrow( () -> new ObjetoNaoEncontradoException("O objeto com o código de identificação " + codigo + " não pode ser encontrado!"));
 		return categoriaLancamentoDomainOptional.get();
 	}
 	
 	public void removerCategoriaLancamento(Long codigo) {
 		CategoriaLancamentoDomain categoriaLancamentoDomainRetorno = this.recuperarCategoriaLancamento(codigo);
-		categoriaLancamentoRepository.delete(categoriaLancamentoDomainRetorno);
+			categoriaLancamentoRepository.delete(categoriaLancamentoDomainRetorno);
+	}
+	
+	public CategoriaLancamentoDomain atualizarCategoriaLancamento(Long codigo, CategoriaLancamentoDomain categoriaLancamentoDomain) {
+		CategoriaLancamentoDomain categoriaLancamentoDomainRetorno = this.recuperarCategoriaLancamento(codigo);
+		BeanUtils.copyProperties(categoriaLancamentoDomain, categoriaLancamentoDomainRetorno, "codigo");
+		return this.categoriaLancamentoRepository.save(categoriaLancamentoDomainRetorno);
 	}
 
 }

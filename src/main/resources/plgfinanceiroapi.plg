@@ -20,7 +20,11 @@
 		
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
-		-- [PENDENTE] PLGFINANCEIROAPI-57202047010415
+		-- [PENDENTE] PLGFINANCEIROAPI-03202059010417
+		
+			- Implementação da alteração de dados para as Categorias de Lançamento
+		
+		-- [FINALIZADO] PLGFINANCEIROAPI-57202047010415
 		
 			- Implementando endpoint de remoção de dados
 		
@@ -64,7 +68,7 @@
 			
 		-- Comandos para versionar o projeto
 			git add *
-			git commit -a -m $'PLGFINANCEIROAPI-57202047010415 \n - Implementando endpoint de remoção de dados'
+			git commit -a -m $'PLGFINANCEIROAPI-03202059010417 \n Implementação da alteração de dados para as Categorias de Lançamento'
 			git push
 			
 	+ COMANDOS

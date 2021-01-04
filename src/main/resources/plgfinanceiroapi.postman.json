@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7af9185b-91c2-4790-827e-08ab99367618",
+		"_postman_id": "dc11d6dc-5926-4444-9cc7-10f5c1526da9",
 		"name": "PLGFINANCEIROAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,32 +11,117 @@
 				{
 					"name": "Cadastrar Categoria de Lançamento",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoria\":\"ALIMENTAÇÂO\",\n    \"subcategoria\":\"SUPERMERCADO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/categoria-lancamento/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria-lancamento",
+								""
+							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Cadastrar Categoria de Lançamento (Código)",
+					"name": "Recuperar por Categoria de Lançamento",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/categoria-lancamento/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria-lancamento",
+								""
+							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Cadastrar Categoria de Lançamento",
+					"name": "Pesquisar por Categoria de Lançamento (Código)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/categoria-lancamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria-lancamento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Categoria Lançamento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categoria-lancamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria-lancamento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Categoria de Lançamento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoria\": \"Alimentação\",\n    \"subcategoria\": \"Verduras, Frutas e Legumes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/categoria-lancamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria-lancamento",
+								"1"
+							]
 						}
 					},
 					"response": []

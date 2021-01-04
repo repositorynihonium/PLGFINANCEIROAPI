@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -60,6 +61,12 @@ public class CategoriaLancamentoController implements Serializable {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void removerCategoriaLancamento(@PathVariable Long codigo) {
 		categoriaLancamentoService.removerCategoriaLancamento(codigo);
+	}
+	
+	@PutMapping("/{codigo}")
+	public ResponseEntity<CategoriaLancamentoDomain> atualizarCategoriaLancamento(@PathVariable Long codigo, @Valid @RequestBody CategoriaLancamentoDomain categoriaLancamentoDomain) {
+		CategoriaLancamentoDomain categoriaLancamentoDomainRetorno = categoriaLancamentoService.atualizarCategoriaLancamento(codigo, categoriaLancamentoDomain);
+		return ResponseEntity.ok().body(categoriaLancamentoDomainRetorno);
 	}
 
 }
