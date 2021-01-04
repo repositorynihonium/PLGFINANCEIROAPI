@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "7af9185b-91c2-4790-827e-08ab99367618",
+		"name": "PLGFINANCEIROAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categoria de Lançamento",
+			"item": [
+				{
+					"name": "Cadastrar Categoria de Lançamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Categoria de Lançamento (Código)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Categoria de Lançamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

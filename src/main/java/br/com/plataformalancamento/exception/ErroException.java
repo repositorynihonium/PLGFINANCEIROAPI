@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.BindingResult;
@@ -14,9 +13,6 @@ public class ErroException implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired
-	private static MessageSource messageSource;
-	
 	private String mensagem;
 	private String causaErro;
 	
@@ -25,14 +21,13 @@ public class ErroException implements Serializable {
 		this.causaErro = mensagemCausaErro;
 	}
 	
-	public static List<ErroException> criarListagemErros(BindingResult bindingResult) {
+	public static List<ErroException> criarListagemErros(BindingResult bindingResult, MessageSource messageSource) {
 		List<ErroException> erroExceptionList = new ArrayList<>();
 		for(FieldError filError : bindingResult.getFieldErrors()) {
 			String mensagemException = messageSource.getMessage(filError, LocaleContextHolder.getLocale());
 			String mensagemCausaErro = filError.toString();
 			erroExceptionList.add(new ErroException(mensagemException, mensagemCausaErro));
 		}
-		
 		return erroExceptionList;
 	}
 

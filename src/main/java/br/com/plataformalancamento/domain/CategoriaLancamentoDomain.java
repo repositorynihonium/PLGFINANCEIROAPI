@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -28,6 +30,8 @@ public class CategoriaLancamentoDomain implements Serializable {
 	@Column(name = "CATEGORIA", nullable = false)
 	@NotNull(message = "O nome da categoria deve é obrigatório")
 	@NotEmpty(message = "O nome da categoria deve ser preenchido")
+	@NotBlank(message = "O nome da categoria deve ser preenchido")
+	@Size(min = 4, max = 80)
 	@JsonProperty("categoria")
 	private String categoria;
 	

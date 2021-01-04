@@ -10,12 +10,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class TratamentoException extends ResponseEntityExceptionHandler {
+public class TratarException extends ResponseEntityExceptionHandler {
 
 	@Autowired
 	private MessageSource messageSource;
@@ -34,16 +35,10 @@ public class TratamentoException extends ResponseEntityExceptionHandler {
 	/**
 	 * Captura erros, por exemplo, de validacao de campos nulos
 	 */
-//	@Override
-//	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-//		List<ErroException> erroExceptionList = ErroException.criarListagemErros(ex.getBindingResult());
-//		return super.handleExceptionInternal(ex, erroExceptionList, headers, HttpStatus.BAD_REQUEST, request);
-//	}
-	
-//	@ExceptionHandler(PropertyValueException.class)
-//	protected ResponseEntity<Object> handlePropertyValueException(PropertyValueException propertyValueException, HttpHeaders httpHeaders, HttpStatus httpStatus, WebRequest webRequest) {
-//		List<ErroException> erroExceptionList = ErroException.criarListagemErros(propertyValueException.getBindingResult());
-//		return handleException(propertyValueException, erroExceptionList, httpHeaders, HttpStatus.BAD_REQUEST, webRequest);
-//	}
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException methodArgumentNotValidException, HttpHeaders httpHeaders, HttpStatus httpStatus, WebRequest webRequest) {
+		List<ErroException> erroExceptionList = ErroException.criarListagemErros(methodArgumentNotValidException.getBindingResult(), messageSource);
+		return handleExceptionInternal(methodArgumentNotValidException, erroExceptionList, httpHeaders, HttpStatus.BAD_REQUEST, webRequest);
+	}
 	
 }
