@@ -20,6 +20,14 @@
 		
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
+		-- [PENDENTE] PLGFINANCEIROAPI-16202041010611
+		
+			- Responsável por implementar os endpoint de consulta de Lançamento Financeiro
+		
+		-- [PENDENTE] PLGFINANCEIROAPI-29202058010515
+		
+			- Responsável por implementar o mapeamento das entidades relacionadas com o Lançamento Financeiro
+		
 		-- [PENDENTE] PLGFINANCEIROAPI-03202059010417
 		
 			- Implementação da alteração de dados para as Categorias de Lançamento
@@ -68,7 +76,7 @@
 			
 		-- Comandos para versionar o projeto
 			git add *
-			git commit -a -m $'PLGFINANCEIROAPI-03202059010417 \n Implementação da alteração de dados para as Categorias de Lançamento'
+			git commit -a -m $'PLGFINANCEIROAPI-29202058010515 \n - Responsável por implementar o mapeamento das entidades relacionadas com o Lançamento Financeiro'
 			git push
 			
 	+ COMANDOS
@@ -91,3 +99,63 @@
 			sudo /opt/lampp/lampp stop
 			/opt/lampp/bin/mysql_upgrade
 			sudo /opt/lampp/lampp start
+			
+	+ MAPEAMENTO DE ENTIDADES DE DOMINIO
+	
+		-- Despesa Fixa
+			
+		Favorecido:				Vivo Telecomunicações [Categoria: Telefônia Fixa, Móvel e Internet]
+		Produto ou Serviço:		Serviços de Internet
+		Data Vencimento: 		15/01/2020
+		Data Pagamento:			NULL
+		Valor do Pagamento:		R$ 120,00
+		Responsável Pagamento: 	Jamille Batista Alves (Administradora Financeira)
+		Observação:     		NULL
+		
+		
+		-- Despesa Variável
+		
+		Favorecido:				Supermercado PraVocê (Taguatinga Centro) [Categoria: Alimentos, Supermercado, Verdurão]
+		Produto ou Serviço:		Cerveja Skol Litrão sem alcoól 350ml
+		Data Vencimento: 		NULL
+		Data Pagamento:			05/01/2020
+		Valor do Pagamento:		R$ 8,00
+		Responsável Pagamento:	José Quintinn (Administrador Financeiro)
+		Observação:     
+		
+		-- Mapeamento
+		
+		CREATE TABLE TB_PESSOA (
+			CODIGO					-- IDENTIFICADOR UNICO DA TABELA
+			TIPO_CATEGORIA_PESSOA	-- CORRESPONDE A CHAVE PRIMÁRIA DA TABELA TB_CATEGORIA_LANCAMENTO_PESSOA
+			NOME					-- REFERE-SE AO NOME PROPRIO DE UMA DETERMINADA PESSOA
+			NOME_FANTASIA			-- REFERE-SE AO NOME FANTASIA DE UMA DETERMINADA PESSOA JURIDICA
+			NOME_FONETICO			-- REFERE-SE AO NOME FONETICO PARA PESSOAS COM NOME ESTRANGEIRO, COMO RUSSO, ARABE, HEBRAICO, CHINES
+			IS_ATIVO				-- POR PADRAO DEVE SER "TRUE" PARA PESSOAS ATIVAS NO SISTEMA E "FALSE" PARA PESSOAS INATIVAS
+			OBSERVACAO				-- REFERE-SE A OBSERVACAO DE UM DETERMINADO LANCAMENTO
+		);
+		
+		CREATE TABLE TB_CATEGORIA_LANCAMENTO_FINANCEIRO (
+			CODIGO				-- IDENTIFICADOR UNICO DA TABELA
+			NOME				-- REFERE-SE AO NOME DA CATEGORIA. PODE SER: "DESPESA FIXA", "DESPESA VARIAVEL"
+			SIGLA				-- REFERE-SE A SIGLA DE UMA TERMINADA CATEGORIA DE PESSOA. PODE SER "DF", "DV"
+		);
+		
+		CREATE TABLE TB_PRODUTO_SERVICO (
+			CODIGO				-- IDENTIFICADOR UNICO DA TABELA
+			NOME				-- REFERE-SE AO NOME DA PRODUTO OU SERVICO ADQUIRIDO, ALUGADO OU EMPRESTADO
+			OBSERVACAO			-- REFERE-SE A OBSERVACAO DE UM DETERMINADO PRODUTO OU SERVICO
+		);
+		
+		CREATE TABLE TB_LANCAMENTO_FINANCEIRO(
+			CODIGO						-- IDENTIFICADOR UNICO DA TABELA
+			ID_FAVORECIDO				-- CORRESPONDE A CHAVE PRIMÁRIA DA TABELA TB_PESSOA
+			ID_CATEGORIA_LANCAMENTO		-- CORRESPONDE A CHAVE PRIMÁRIA DA TABELA TB_CATEGORIA_LANCAMENTO_FINANCEIRO
+			ID_PRODUTO_SERVICO			-- CORRESPONDE A CHAVE PRIMÁRIA DA TABELA TB_PRODUTO_SERVICO
+			ID_RESPONSAVEL_PAGAMENTO	-- CORRESPONDE A CHAVE PRIMÁRIA DA TABELA "TB_PESSOA"
+			DATA_VENCIMENTO				-- REFERE-SE A DATA DE VENCIMENTO, CASO O VALOR RETORNADO DA TB_CATEGORIA_LANCAMENTO FOR IGUAL A "DESPESA FIXA"
+			DATA_PAGAMENTO				-- REFERE-SE A DATA DE PAGAMENTO DE UMA DETERMINADA TRANSAÇÃO FINANCEIRA
+			VALOR_PAGAMENTO				-- REFERE-SE AO VALOR DE UM DETERMINADO PAGAMENTO
+			OBSERVACAO					-- REFERE-SE A OBSERVACAO DE UM DETERMINADO LANCAMENTO
+		);
+		
