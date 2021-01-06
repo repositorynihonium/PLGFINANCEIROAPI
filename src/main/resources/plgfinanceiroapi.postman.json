@@ -127,6 +127,30 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Lançamento Financeiro",
+			"item": [
+				{
+					"name": "Recuperar Lançamento Financeiro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
