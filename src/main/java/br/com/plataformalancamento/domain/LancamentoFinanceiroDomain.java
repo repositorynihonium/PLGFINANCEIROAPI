@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.plataformalancamento.enumeration.TipoSituacaoLancamentoFinanceiroEnumeration;
@@ -52,9 +53,11 @@ public class LancamentoFinanceiroDomain implements Serializable {
 	@JoinColumn(name = "ID_FONTE_PAGAMENTO")
 	private PessoaDomain fontePagamento;
 	
+	@JsonFormat(pattern = "DD/MM/YYYY")
 	@Column(name = "DATA_VENCIMENTO", nullable = true)
 	private Date dataVencimento;
 	
+	@JsonFormat(pattern = "DD/MM/YYYY")
 	@Column(name = "DATA_PAGAMENTO", nullable = true)
 	private Date dataPagamento;
 	

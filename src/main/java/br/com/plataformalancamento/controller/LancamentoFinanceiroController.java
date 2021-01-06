@@ -3,11 +3,19 @@ package br.com.plataformalancamento.controller;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.plataformalancamento.domain.LancamentoFinanceiroDomain;
@@ -32,6 +40,24 @@ public class LancamentoFinanceiroController implements Serializable {
 	public ResponseEntity<LancamentoFinanceiroDomain> recuperar(@PathVariable Long codigo) {
 		LancamentoFinanceiroDomain lancamentoFinanceiroDomain = this.lancamentoFinanceiroService.recuperar(codigo);
 		return ResponseEntity.ok().body(lancamentoFinanceiroDomain);
+	}
+	
+	@PostMapping
+	public ResponseEntity<LancamentoFinanceiroDomain> cadastrar(@Valid @RequestBody LancamentoFinanceiroDomain lancamentoFinanceiroDomain) {
+		LancamentoFinanceiroDomain lancamentoFinanceiroDomainRetorno = this.lancamentoFinanceiroService.cadastrar(lancamentoFinanceiroDomain);
+		return ResponseEntity.created(null).body(lancamentoFinanceiroDomainRetorno);
+	}
+	
+	@PutMapping("{codigo}")
+	public ResponseEntity<LancamentoFinanceiroDomain> atualizar(@Valid @PathVariable Long codigo, @RequestBody LancamentoFinanceiroDomain lancamentoFinanceiroDomain) {
+		LancamentoFinanceiroDomain lancamentoFinanceiroDomainResultado = this.lancamentoFinanceiroService.atualizar(codigo, lancamentoFinanceiroDomain);
+		return ResponseEntity.ok().body(lancamentoFinanceiroDomainResultado);
+	}
+	
+	@DeleteMapping("{codigo}")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public void remover(@Valid @PathVariable Long codigo) {
+		this.lancamentoFinanceiroService.remover(codigo);
 	}
 	
 }

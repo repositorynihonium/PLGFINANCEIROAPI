@@ -76,7 +76,7 @@
 			
 		-- Comandos para versionar o projeto
 			git add *
-			git commit -a -m $'PLGFINANCEIROAPI-29202058010515 \n - Responsável por implementar o mapeamento das entidades relacionadas com o Lançamento Financeiro'
+			git commit -a -m $'PLGFINANCEIROAPI-16202041010611 \n - Responsável por implementar os endpoint de consulta de Lançamento Financeiro'
 			git push
 			
 	+ COMANDOS
@@ -92,6 +92,12 @@
 		-- Desisntalar DBEAVER
 		dpkg -l | grep dbeaver
 		sudo dpkg -r dbeaver-ce
+		
+		-- Executar API via command line
+		mvn package
+		mvn deploy:deploy-file
+		mvn deploy
+		./mvnw spring-boot:run
 		
 	+ ERROS CONHECIDOS
 	
