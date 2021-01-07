@@ -55,7 +55,7 @@ public class Application implements CommandLineRunner {
 			pessoaDomain02.setNomeProprio("Jamille Batista Alves");
 			pessoaDomain02.setNomeFantasia(null);
 			pessoaDomain02.setNomeFonetico(null);
-			pessoaDomain02.setIsAtivo(true);
+			pessoaDomain02.setIsAtivo(false);
 			pessoaDomain02.setObservacao(null);
 		
 		PessoaDomain pessoaDomain03 = new PessoaDomain();
@@ -71,7 +71,7 @@ public class Application implements CommandLineRunner {
 			pessoaDomain04.setNomeProprio("José Quintinn");
 			pessoaDomain04.setNomeFantasia(null);
 			pessoaDomain04.setNomeFonetico(null);
-			pessoaDomain04.setIsAtivo(true);
+			pessoaDomain04.setIsAtivo(false);
 			pessoaDomain04.setObservacao(null);
 			
 			pessoaRepository.saveAll(Arrays.asList(pessoaDomain01, pessoaDomain02, pessoaDomain03, pessoaDomain04));

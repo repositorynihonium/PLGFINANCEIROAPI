@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +34,7 @@ public class LancamentoFinanceiroDomain implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_FAVORECIDO")
+	@NotNull
 	private PessoaDomain favorecido;
 	
 	@ManyToOne

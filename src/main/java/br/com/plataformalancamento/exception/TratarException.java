@@ -51,4 +51,15 @@ public class TratarException extends ResponseEntityExceptionHandler {
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public void handleRuntimeException(RuntimeException runtimeException) { }
 	
+	/**
+	 * Captura erros de negocio para pessoas inexistentes ou inativas
+	 */
+	@ExceptionHandler({ PessoaInexistenteInatvaException.class })
+	public ResponseEntity<Object> handlePessoaInexistenteInatvaException(PessoaInexistenteInatvaException pessoaInexistenteInatvaException) {
+		String mensagemException = messageSource.getMessage("pessoa.inativa.inexistente", null, LocaleContextHolder.getLocale());
+		String mensagemCausaErro = pessoaInexistenteInatvaException.getMessage();
+		List<ErroException> erroExceptionList = Arrays.asList(new ErroException(mensagemException, mensagemCausaErro));
+		return ResponseEntity.ok().body(erroExceptionList);
+	}
+	
 }

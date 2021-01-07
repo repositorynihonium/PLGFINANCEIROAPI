@@ -149,6 +149,94 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Recuperar Lançamento Financeiro (Por Código)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Lancamento Financeiro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"fontePagamento\": {\n        \"codigo\": 3\n    },\n    \"dataVencimento\": \"07/01/2021\",\n    \"dataPagamento\": \"07/01/2021\",\n    \"valorPagamento\": 1000.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"tipoSituacaoLancamento\": \"AGUARDANDO_PAGAMENTO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Lançamento Financeiro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"fontePagamento\": {\n        \"codigo\": 3\n    },\n    \"dataVencimento\": \"07/01/2021\",\n    \"dataPagamento\": \"07/01/2021\",\n    \"valorPagamento\": 1000.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"tipoSituacaoLancamento\": \"PAGO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Lançamento Financeiro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
 			]
 		}
