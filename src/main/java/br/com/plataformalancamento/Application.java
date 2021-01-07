@@ -76,11 +76,23 @@ public class Application implements CommandLineRunner {
 			
 			pessoaRepository.saveAll(Arrays.asList(pessoaDomain01, pessoaDomain02, pessoaDomain03, pessoaDomain04));
 			
-		CategoriaLancamentoFinanceiroDomain categoriaLancamentoFinanceiroDomain = new CategoriaLancamentoFinanceiroDomain();
-			categoriaLancamentoFinanceiroDomain.setNome("Despesa Fixa");
-			categoriaLancamentoFinanceiroDomain.setSigla("DF");
+		CategoriaLancamentoFinanceiroDomain categoriaLancamentoFinanceiroDomain01 = new CategoriaLancamentoFinanceiroDomain();
+			categoriaLancamentoFinanceiroDomain01.setNome("Despesa Fixa");
+			categoriaLancamentoFinanceiroDomain01.setSigla("DF");
 			
-			categoriaLancamentoFinanceiroRepository.save(categoriaLancamentoFinanceiroDomain);
+		CategoriaLancamentoFinanceiroDomain categoriaLancamentoFinanceiroDomain02 = new CategoriaLancamentoFinanceiroDomain();
+			categoriaLancamentoFinanceiroDomain02.setNome("Despesa Variável");
+			categoriaLancamentoFinanceiroDomain02.setSigla("DV");
+			
+		CategoriaLancamentoFinanceiroDomain categoriaLancamentoFinanceiroDomain03 = new CategoriaLancamentoFinanceiroDomain();
+			categoriaLancamentoFinanceiroDomain03.setNome("Receita Fixa");
+			categoriaLancamentoFinanceiroDomain03.setSigla("RF");
+			
+		CategoriaLancamentoFinanceiroDomain categoriaLancamentoFinanceiroDomain04 = new CategoriaLancamentoFinanceiroDomain();
+			categoriaLancamentoFinanceiroDomain04.setNome("Receita Variável");
+			categoriaLancamentoFinanceiroDomain04.setSigla("RV");
+			
+			categoriaLancamentoFinanceiroRepository.saveAll(Arrays.asList(categoriaLancamentoFinanceiroDomain01, categoriaLancamentoFinanceiroDomain02, categoriaLancamentoFinanceiroDomain03, categoriaLancamentoFinanceiroDomain04));
 			
 		ProdutoServicoDomain produtoServicoDomain = new ProdutoServicoDomain();
 			produtoServicoDomain.setNome("Fatura Tim Beta");
@@ -89,7 +101,7 @@ public class Application implements CommandLineRunner {
 			
 		LancamentoFinanceiroDomain lancamentoFinanceiroDomain01 = new LancamentoFinanceiroDomain();
 			lancamentoFinanceiroDomain01.setFavorecido(pessoaDomain01);
-			lancamentoFinanceiroDomain01.setCategoriaLancamentoFinanceiroDomain(categoriaLancamentoFinanceiroDomain);
+			lancamentoFinanceiroDomain01.setCategoriaLancamentoFinanceiroDomain(categoriaLancamentoFinanceiroDomain01);
 			lancamentoFinanceiroDomain01.setProdutoServicoDomain(produtoServicoDomain);
 			lancamentoFinanceiroDomain01.setResponsavelPagamento(pessoaDomain02);
 			lancamentoFinanceiroDomain01.setDataVencimento(new Date());
@@ -101,7 +113,7 @@ public class Application implements CommandLineRunner {
 			
 		LancamentoFinanceiroDomain lancamentoFinanceiroDomain02 = new LancamentoFinanceiroDomain();
 			lancamentoFinanceiroDomain02.setFavorecido(pessoaDomain01);
-			lancamentoFinanceiroDomain02.setCategoriaLancamentoFinanceiroDomain(categoriaLancamentoFinanceiroDomain);
+			lancamentoFinanceiroDomain02.setCategoriaLancamentoFinanceiroDomain(categoriaLancamentoFinanceiroDomain01);
 			lancamentoFinanceiroDomain02.setProdutoServicoDomain(produtoServicoDomain);
 			lancamentoFinanceiroDomain02.setResponsavelPagamento(pessoaDomain04);
 			lancamentoFinanceiroDomain02.setDataVencimento(new Date());
@@ -111,7 +123,7 @@ public class Application implements CommandLineRunner {
 			lancamentoFinanceiroDomain02.setFontePagamento(pessoaDomain03);
 			lancamentoFinanceiroDomain02.setObservacao(null);
 			
-			lancamentoFinanceiroRepository.saveAll(Arrays.asList(lancamentoFinanceiroDomain01, lancamentoFinanceiroDomain02));
+//			lancamentoFinanceiroRepository.saveAll(Arrays.asList(lancamentoFinanceiroDomain01, lancamentoFinanceiroDomain02));
 	}
 
 }

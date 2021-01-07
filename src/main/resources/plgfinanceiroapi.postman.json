@@ -177,7 +177,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"fontePagamento\": {\n        \"codigo\": 3\n    },\n    \"dataVencimento\": \"07/01/2021\",\n    \"dataPagamento\": \"07/01/2021\",\n    \"valorPagamento\": 1000.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"tipoSituacaoLancamento\": \"AGUARDANDO_PAGAMENTO\"\n}",
+							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"dataVencimento\": \"10/01/2021\",\n    \"dataPagamento\": null,\n    \"valorPagamento\": 1000.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"tipoSituacaoLancamento\": \"AGUARDANDO_PAGAMENTO\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

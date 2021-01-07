@@ -2,6 +2,7 @@ package br.com.plataformalancamento.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -54,6 +55,9 @@ public class LancamentoFinanceiroDomain implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "ID_FONTE_PAGAMENTO")
 	private PessoaDomain fontePagamento;
+
+	@Column(name = "IDENTIFICADOR", length = 80, unique = true, nullable = true)
+	private String identificador;
 	
 	@JsonFormat(pattern = "DD/MM/YYYY")
 	@Column(name = "DATA_VENCIMENTO", nullable = true)
@@ -62,6 +66,10 @@ public class LancamentoFinanceiroDomain implements Serializable {
 	@JsonFormat(pattern = "DD/MM/YYYY")
 	@Column(name = "DATA_PAGAMENTO", nullable = true)
 	private Date dataPagamento;
+
+	@JsonFormat(pattern = "DD/MM/YYYY")
+	@Column(name = "DATA_ULTIMA_ALTERACAO", nullable = true)
+	private LocalDateTime dataUltimaAlteracao;
 	
 	@Column(name = "VALOR_PAGAMENTO", nullable = true)
 	private BigDecimal valorPagamento;
@@ -125,6 +133,14 @@ public class LancamentoFinanceiroDomain implements Serializable {
 		this.fontePagamento = fontePagamento;
 	}
 
+	public String getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
+	}
+
 	public Date getDataVencimento() {
 		return dataVencimento;
 	}
@@ -133,12 +149,20 @@ public class LancamentoFinanceiroDomain implements Serializable {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public Date getDataPagamento() {
-		return dataPagamento;
-	}
-
 	public void setDataPagamento(Date dataPagamento) {
 		this.dataPagamento = dataPagamento;
+	}
+
+	public LocalDateTime getDataUltimaAlteracao() {
+		return dataUltimaAlteracao;
+	}
+
+	public void setDataUltimaAlteracao(LocalDateTime dataUltimaAlteracao) {
+		this.dataUltimaAlteracao = dataUltimaAlteracao;
+	}
+
+	public Date getDataPagamento() {
+		return dataPagamento;
 	}
 
 	public BigDecimal getValorPagamento() {

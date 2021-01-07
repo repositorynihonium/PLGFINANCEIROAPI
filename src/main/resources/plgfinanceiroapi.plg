@@ -20,6 +20,11 @@
 		
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
+		-- [PENDENTE] PLGFINANCEIROAPI-10202051010714
+		
+			- Responsavel por implementar o codigo identificador (LANCAMENTO<DES/REC>-<DIA><MES><ANO><SEQUENCIAL>, exemplo: LANCAMENTOREC2021010701) de um determinado lancamento financeiro
+			- Responsavel por implementar pesquisa filtrada por Lancamentos Financeiros
+		
 		-- [PENDENTE] PLGFINANCEIROAPI-46202152010620
 		
 			- Responsável por implementar Regras de Negocio no endpoint de Lançamento Financeiro
@@ -81,7 +86,7 @@
 			
 		-- Comandos para versionar o projeto
 			git add *
-			git commit -a -m $'PLGFINANCEIROAPI-46202152010620 \n - Responsável por implementar Regras de Negocio no endpoint de Lançamento Financeiro \n - Regra Negócio -> RG0XX - Nao permitir cadastrar um lancamento para uma pessoa inativa'
+			git commit -a -m $'PLGFINANCEIROAPI-10202051010714 \n - Responsavel por implementar o codigo identificador (LANCAMENTO<DES/REC>-<DIA><MES><ANO><SEQUENCIAL>, exemplo: LANCAMENTOREC2021010701) de um determinado lancamento financeiro'
 			git push
 			
 	+ COMANDOS
@@ -95,14 +100,17 @@
 			kill -9 15769
 		
 		-- Desisntalar DBEAVER
-		dpkg -l | grep dbeaver
-		sudo dpkg -r dbeaver-ce
+			dpkg -l | grep dbeaver
+			sudo dpkg -r dbeaver-ce
 		
 		-- Executar API via command line
-		mvn package
-		mvn deploy:deploy-file
-		mvn deploy
-		./mvnw spring-boot:run
+			mvn package
+			mvn deploy:deploy-file
+			mvn deploy
+			./mvnw spring-boot:run
+			
+		-- Verificar portas ocupadas
+			sudo netstat -tlpn | grep 8080
 		
 	+ ERROS CONHECIDOS
 	
