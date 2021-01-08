@@ -20,12 +20,16 @@
 		
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
-		-- [PENDENTE] PLGFINANCEIROAPI-10202051010714
+		-- [FINALIZADO] PLGFINANCEIROAPI-10202044010811
+		
+			- Responsável por implementar as pesquisas de Lançamentos Financeiros
+		
+		-- [FINALIZADO] PLGFINANCEIROAPI-10202051010714
 		
 			- Responsavel por implementar o codigo identificador (LANCAMENTO<DES/REC>-<DIA><MES><ANO><SEQUENCIAL>, exemplo: LANCAMENTOREC2021010701) de um determinado lancamento financeiro
 			- Responsavel por implementar pesquisa filtrada por Lancamentos Financeiros
 		
-		-- [PENDENTE] PLGFINANCEIROAPI-46202152010620
+		-- [FINALIZADO] PLGFINANCEIROAPI-46202152010620
 		
 			- Responsável por implementar Regras de Negocio no endpoint de Lançamento Financeiro
 			- Regra Negócio -> RG0XX - Nao permitir cadastrar um lancamento para uma pessoa inativa

@@ -1,7 +1,7 @@
 package br.com.plataformalancamento.service;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +13,7 @@ import br.com.plataformalancamento.domain.CategoriaLancamentoFinanceiroDomain;
 import br.com.plataformalancamento.domain.LancamentoFinanceiroDomain;
 import br.com.plataformalancamento.domain.PessoaDomain;
 import br.com.plataformalancamento.exception.PessoaInexistenteInatvaException;
+import br.com.plataformalancamento.filter.LancamentoFinanceiroFilter;
 import br.com.plataformalancamento.repository.CategoriaLancamentoFinanceiroRepository;
 import br.com.plataformalancamento.repository.LancamentoFinanceiroRepository;
 import br.com.plataformalancamento.utility.DateUtility;
@@ -21,6 +22,7 @@ import br.com.plataformalancamento.utility.DateUtility;
 public class LancamentoFinanceiroService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 
 	@Autowired
 	private LancamentoFinanceiroRepository lancamentoFinanceiroRepository;
@@ -46,7 +48,7 @@ public class LancamentoFinanceiroService implements Serializable {
 		if (pessoaDomainResultado == null || !pessoaDomainResultado.getIsAtivo()) {
 			throw new PessoaInexistenteInatvaException();
 		}
-		lancamentoFinanceiroDomain.setDataUltimaAlteracao(LocalDateTime.now());
+		lancamentoFinanceiroDomain.setDataUltimaAlteracao(new Date());
 		lancamentoFinanceiroDomain.setIdentificador(gerarIdentificadorLancamentoFinanceiro(lancamentoFinanceiroDomain.getCategoriaLancamentoFinanceiroDomain()));
 		return lancamentoFinanceiroRepository.save(lancamentoFinanceiroDomain);
 	}
@@ -109,12 +111,15 @@ public class LancamentoFinanceiroService implements Serializable {
 		// Se tiver uma determinado Lancamento cadastrado no mesmo dia deve-se incrementar o sequencial
 		int contadorSequencialIdentificador = 1;
 		for(LancamentoFinanceiroDomain lancamentoFinanceiroDomainReturn : this.recuperar()) {
-			if(DateUtility.formatarData(LocalDateTime.now(), DateUtility.FORMATO_YYYYMMDD).equals(DateUtility.formatarData(lancamentoFinanceiroDomainReturn.getDataUltimaAlteracao(), DateUtility.FORMATO_YYYYMMDD))) {
+			if(DateUtility.formatarData(new Date(), DateUtility.FORMATO_YYYYMMDD).equals(DateUtility.formatarData(lancamentoFinanceiroDomainReturn.getDataUltimaAlteracao(), DateUtility.FORMATO_YYYYMMDD))) {
 				contadorSequencialIdentificador += 1;
 			}
 		}
-		System.out.println("CONTADOR SEQUENCIAL: " + contadorSequencialIdentificador);
 		return contadorSequencialIdentificador;
+	}
+	
+	public List<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter) {
+		return lancamentoFinanceiroRepository.filtrarLancamentoFinanceiro(lancamentoFinanceiroFilter);
 	}
 
 }

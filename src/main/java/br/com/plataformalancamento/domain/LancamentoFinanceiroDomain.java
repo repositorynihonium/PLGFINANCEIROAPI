@@ -2,7 +2,6 @@ package br.com.plataformalancamento.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -69,7 +68,7 @@ public class LancamentoFinanceiroDomain implements Serializable {
 
 	@JsonFormat(pattern = "DD/MM/YYYY")
 	@Column(name = "DATA_ULTIMA_ALTERACAO", nullable = true)
-	private LocalDateTime dataUltimaAlteracao;
+	private Date dataUltimaAlteracao;
 	
 	@Column(name = "VALOR_PAGAMENTO", nullable = true)
 	private BigDecimal valorPagamento;
@@ -153,14 +152,6 @@ public class LancamentoFinanceiroDomain implements Serializable {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public LocalDateTime getDataUltimaAlteracao() {
-		return dataUltimaAlteracao;
-	}
-
-	public void setDataUltimaAlteracao(LocalDateTime dataUltimaAlteracao) {
-		this.dataUltimaAlteracao = dataUltimaAlteracao;
-	}
-
 	public Date getDataPagamento() {
 		return dataPagamento;
 	}
@@ -175,6 +166,14 @@ public class LancamentoFinanceiroDomain implements Serializable {
 
 	public TipoSituacaoLancamentoFinanceiroEnumeration getTipoSituacaoLancamentoFinanceiro() {
 		return tipoSituacaoLancamentoFinanceiro;
+	}
+
+	public Date getDataUltimaAlteracao() {
+		return dataUltimaAlteracao;
+	}
+
+	public void setDataUltimaAlteracao(Date dataUltimaAlteracao) {
+		this.dataUltimaAlteracao = dataUltimaAlteracao;
 	}
 
 	public void setTipoSituacaoLancamentoFinanceiro(

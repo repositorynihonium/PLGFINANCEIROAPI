@@ -16,15 +16,14 @@ import br.com.plataformalancamento.domain.ProdutoServicoDomain;
 import br.com.plataformalancamento.enumeration.TipoPessoaEnumeration;
 import br.com.plataformalancamento.enumeration.TipoSituacaoLancamentoFinanceiroEnumeration;
 import br.com.plataformalancamento.repository.CategoriaLancamentoFinanceiroRepository;
-import br.com.plataformalancamento.repository.LancamentoFinanceiroRepository;
 import br.com.plataformalancamento.repository.PessoaRepository;
 import br.com.plataformalancamento.repository.ProdutoServicoRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-	@Autowired
-	private LancamentoFinanceiroRepository lancamentoFinanceiroRepository;
+//	@Autowired
+//	private LancamentoFinanceiroRepository lancamentoFinanceiroRepository;
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;

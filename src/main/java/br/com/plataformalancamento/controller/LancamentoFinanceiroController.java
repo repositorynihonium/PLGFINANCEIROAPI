@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.plataformalancamento.domain.LancamentoFinanceiroDomain;
+import br.com.plataformalancamento.filter.LancamentoFinanceiroFilter;
 import br.com.plataformalancamento.service.LancamentoFinanceiroService;
 
 @RestController
@@ -58,6 +59,12 @@ public class LancamentoFinanceiroController implements Serializable {
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void remover(@Valid @PathVariable Long codigo) {
 		this.lancamentoFinanceiroService.remover(codigo);
+	}
+	
+	@GetMapping("/filtrar")
+	public List<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter) {
+		System.out.println(lancamentoFinanceiroFilter);
+		return this.lancamentoFinanceiroService.filtrarLancamentoFinanceiro(lancamentoFinanceiroFilter);
 	}
 	
 }

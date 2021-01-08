@@ -1,7 +1,9 @@
 package br.com.plataformalancamento.utility;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class DateUtility {
 	
@@ -13,9 +15,9 @@ public class DateUtility {
 		return localDateTime.format(dateTimeFormatter);
 	}
 	
-	public static String formatarData(LocalDateTime localDateTime, String formatoData) {
+	public static String formatarData(Date date, String formatoData) {
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(formatoData);
-		return localDateTime.format(dateTimeFormatter);
+		return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().format(dateTimeFormatter);
 	}
 	
 }
