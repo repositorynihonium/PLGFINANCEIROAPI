@@ -171,13 +171,65 @@
 					"response": []
 				},
 				{
+					"name": "Recuperar Lançamento Financeiro (Filtro: Identificador)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro/filtrar?identificador=LANCAMENTODES20210108002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro",
+								"filtrar"
+							],
+							"query": [
+								{
+									"key": "identificador",
+									"value": "LANCAMENTODES20210108002"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar Lançamento Financeiro (Filtro: Data Ultima Alteracao)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro/filtrar?dataultimaalteracao=2021-01-10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro",
+								"filtrar"
+							],
+							"query": [
+								{
+									"key": "dataultimaalteracao",
+									"value": "2021-01-10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Cadastrar Lancamento Financeiro",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"dataVencimento\": \"10/01/2021\",\n    \"dataPagamento\": null,\n    \"valorPagamento\": 1000.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"tipoSituacaoLancamento\": \"AGUARDANDO_PAGAMENTO\"\n}",
+							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"dataVencimento\": \"10/01/2021\",\n    \"dataPagamento\": null,\n    \"valorPagamento\": 2000.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"tipoSituacaoLancamento\": \"AGUARDANDO_PAGAMENTO\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
