@@ -43,15 +43,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/categoria-lancamento/",
+							"raw": "http://localhost:8080/categoria-lancamento",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categoria-lancamento",
-								""
+								"categoria-lancamento"
 							]
 						}
 					},
@@ -197,6 +196,55 @@
 					"response": []
 				},
 				{
+					"name": "Recuperar Lançamento Financeiro (Paginação)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "ADMINISTRADO_FINANCEIRO",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro/filtrar?size=5&page=4&sorted=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro",
+								"filtrar"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "4"
+								},
+								{
+									"key": "sorted",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Recuperar Lançamento Financeiro (Filtro: Data Ultima Alteracao)",
 					"request": {
 						"method": "GET",
@@ -217,6 +265,40 @@
 									"key": "dataultimaalteracao",
 									"value": "2021-01-10"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar Lançamento Financeiro (Autorização)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "ADMINISTRADOR_FINANCEIRO",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro"
 							]
 						}
 					},
