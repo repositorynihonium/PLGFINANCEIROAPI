@@ -20,7 +20,11 @@
 		
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
-		-- [PENDENTE] PLGFINANCEIROAPI-43202036010920
+		-- [FINALIZADO] PLGFINANCEIROAPI-032020230010922
+		
+			- Responsavel por implementar autenticacao de seguranca nos recursos da API
+		
+		-- [FINALIZADO] PLGFINANCEIROAPI-43202036010920
 		
 			- Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.VALOR_DESCONTO
 			- Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.FORMA_PAGAMENTO
@@ -101,7 +105,7 @@
 			
 		-- Comandos para versionar o projeto
 			git add *
-			git commit -a -m $'PLGFINANCEIROAPI-43202036010920 \n - Responsável por implementar a paginação de resultados de consulta \n - Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.FORMA_PAGAMENTO \n - Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.FORMA_PAGAMENTO \n - Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.VALOR_TOTAL'
+			git commit -a -m $'PLGFINANCEIROAPI-032020230010922 \n - Responsavel por implementar autenticacao de seguranca nos recursos da API'
 			git push
 			
 	+ COMANDOS
@@ -157,11 +161,12 @@
 		Observação:
 		
 		Favorecido:				Bomba Burguer Pizzas e Refeições (Ifood Delivery de Comida e Mercado) [Categoria: Alimentos, Supermercado, Verdurão]
-		Produto ou Serviço 01:	1 Pizza (Alho e Mussarela)		- R$ 50,00
+		Produto ou Serviço 01:	1 Pizza de Alho					- R$ 25,00
 		Produto ou Serviço 02:	1 Guaraná 2 litros				- R$ 06,99
+		Produto ou Serviço 03:	1 Pizza de Mussarela			- R$ 25,00
 		Data Vencimento: 		NULL
 		Data Pagamento:			09/01/2020
-		Valor do Total:			R$ 36,99
+		Valor do Total:			R$ 50,99
 		Valor do Desconto:		R$ 20,00
 		Valor do Pagamento:		R$ 36,99
 		Responsável Pagamento:	José Quintinn (Administrador Financeiro)

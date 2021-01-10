@@ -16,14 +16,15 @@ import br.com.plataformalancamento.domain.ProdutoServicoDomain;
 import br.com.plataformalancamento.enumeration.TipoPessoaEnumeration;
 import br.com.plataformalancamento.enumeration.TipoSituacaoLancamentoFinanceiroEnumeration;
 import br.com.plataformalancamento.repository.CategoriaLancamentoFinanceiroRepository;
+import br.com.plataformalancamento.repository.LancamentoFinanceiroRepository;
 import br.com.plataformalancamento.repository.PessoaRepository;
 import br.com.plataformalancamento.repository.ProdutoServicoRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-//	@Autowired
-//	private LancamentoFinanceiroRepository lancamentoFinanceiroRepository;
+	@Autowired
+	private LancamentoFinanceiroRepository lancamentoFinanceiroRepository;
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;
@@ -122,7 +123,7 @@ public class Application implements CommandLineRunner {
 			lancamentoFinanceiroDomain02.setFontePagamento(pessoaDomain03);
 			lancamentoFinanceiroDomain02.setObservacao(null);
 			
-//			lancamentoFinanceiroRepository.saveAll(Arrays.asList(lancamentoFinanceiroDomain01, lancamentoFinanceiroDomain02));
+			lancamentoFinanceiroRepository.saveAll(Arrays.asList(lancamentoFinanceiroDomain01, lancamentoFinanceiroDomain02));
 	}
 
 }
