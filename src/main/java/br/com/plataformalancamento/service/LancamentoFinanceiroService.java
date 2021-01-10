@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.plataformalancamento.domain.CategoriaLancamentoFinanceiroDomain;
@@ -118,8 +120,8 @@ public class LancamentoFinanceiroService implements Serializable {
 		return contadorSequencialIdentificador;
 	}
 	
-	public List<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter) {
-		return lancamentoFinanceiroRepository.filtrarLancamentoFinanceiro(lancamentoFinanceiroFilter);
+	public Page<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter, Pageable pageable) {
+		return lancamentoFinanceiroRepository.filtrarLancamentoFinanceiro(lancamentoFinanceiroFilter, pageable);
 	}
 
 }

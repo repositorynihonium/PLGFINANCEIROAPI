@@ -20,6 +20,13 @@
 		
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
+		-- [PENDENTE] PLGFINANCEIROAPI-43202036010920
+		
+			- Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.VALOR_DESCONTO
+			- Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.FORMA_PAGAMENTO
+			- Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.VALOR_TOTAL
+			- Responsável por implementar a paginação de resultados de consulta
+		
 		-- [FINALIZADO] PLGFINANCEIROAPI-10202044010811
 		
 			- Responsável por implementar as pesquisas de Lançamentos Financeiros
@@ -53,6 +60,10 @@
 		-- [FINALIZADO] PLGFINANCEIROAPI-51202058010414
 		
 			- Responsável por implementar refactory para os controllers
+			
+		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
+		
+			- Refatorar mapeamento do campo TB_LANCAMENTO_FINANCEIRO.ID_PRODUTO_SERVICO para aceitar uma lista de Produtos ou Servicos
 			
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
@@ -90,7 +101,7 @@
 			
 		-- Comandos para versionar o projeto
 			git add *
-			git commit -a -m $'PLGFINANCEIROAPI-10202051010714 \n - Responsavel por implementar o codigo identificador (LANCAMENTO<DES/REC>-<DIA><MES><ANO><SEQUENCIAL>, exemplo: LANCAMENTOREC2021010701) de um determinado lancamento financeiro'
+			git commit -a -m $'PLGFINANCEIROAPI-43202036010920 \n - Responsável por implementar a paginação de resultados de consulta \n - Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.FORMA_PAGAMENTO \n - Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.FORMA_PAGAMENTO \n - Responsável por cadastrar o campo TB_LANCAMENTO_FINANCEIRO.VALOR_TOTAL'
 			git push
 			
 	+ COMANDOS
@@ -135,7 +146,6 @@
 		Responsável Pagamento: 	Jamille Batista Alves (Administradora Financeira)
 		Observação:     		NULL
 		
-		
 		-- Despesa Variável
 		
 		Favorecido:				Supermercado PraVocê (Taguatinga Centro) [Categoria: Alimentos, Supermercado, Verdurão]
@@ -144,7 +154,19 @@
 		Data Pagamento:			05/01/2020
 		Valor do Pagamento:		R$ 8,00
 		Responsável Pagamento:	José Quintinn (Administrador Financeiro)
-		Observação:     
+		Observação:
+		
+		Favorecido:				Bomba Burguer Pizzas e Refeições (Ifood Delivery de Comida e Mercado) [Categoria: Alimentos, Supermercado, Verdurão]
+		Produto ou Serviço 01:	1 Pizza (Alho e Mussarela)		- R$ 50,00
+		Produto ou Serviço 02:	1 Guaraná 2 litros				- R$ 06,99
+		Data Vencimento: 		NULL
+		Data Pagamento:			09/01/2020
+		Valor do Total:			R$ 36,99
+		Valor do Desconto:		R$ 20,00
+		Valor do Pagamento:		R$ 36,99
+		Responsável Pagamento:	José Quintinn (Administrador Financeiro)
+		Forma de Pagamento:		Cartão de Crédito (XXXX XXXX XXXX 9972)
+		Observação:
 		
 		-- Mapeamento
 		

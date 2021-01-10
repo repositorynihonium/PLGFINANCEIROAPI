@@ -42,6 +42,7 @@ public class LancamentoFinanceiroDomain implements Serializable {
 	@JsonProperty("categoriaLancamentoFinanceiro")
 	private CategoriaLancamentoFinanceiroDomain categoriaLancamentoFinanceiroDomain;
 	
+	// FIXME -- Refatorar esse campo para lista. Um lançamento deve aceitar varios produtos ou servicos
 	@ManyToOne
 	@JoinColumn(name = "ID_PRODUTO_SERVICO")
 	@JsonProperty("produtoServico")
@@ -70,8 +71,17 @@ public class LancamentoFinanceiroDomain implements Serializable {
 	@Column(name = "DATA_ULTIMA_ALTERACAO", nullable = true)
 	private Date dataUltimaAlteracao;
 	
+	@Column(name = "VALOR_TOTAL", nullable = true)
+	private BigDecimal valorTotal;
+	
 	@Column(name = "VALOR_PAGAMENTO", nullable = true)
 	private BigDecimal valorPagamento;
+	
+	@Column(name = "VALOR_DESCONTO", nullable = true)
+	private BigDecimal valorDesconto;
+	
+	@Column(name = "FORMA_PAGAMENTO", nullable = true)
+	private BigDecimal formaPagamento;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "TIPO_SITUACAO_LANCAMENTO", nullable = false)
@@ -164,6 +174,22 @@ public class LancamentoFinanceiroDomain implements Serializable {
 		this.valorPagamento = valorPagamento;
 	}
 
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	public BigDecimal getFormaPagamento() {
+		return formaPagamento;
+	}
+
+	public void setFormaPagamento(BigDecimal formaPagamento) {
+		this.formaPagamento = formaPagamento;
+	}
+
 	public TipoSituacaoLancamentoFinanceiroEnumeration getTipoSituacaoLancamentoFinanceiro() {
 		return tipoSituacaoLancamentoFinanceiro;
 	}
@@ -174,6 +200,14 @@ public class LancamentoFinanceiroDomain implements Serializable {
 
 	public void setDataUltimaAlteracao(Date dataUltimaAlteracao) {
 		this.dataUltimaAlteracao = dataUltimaAlteracao;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public void setTipoSituacaoLancamentoFinanceiro(

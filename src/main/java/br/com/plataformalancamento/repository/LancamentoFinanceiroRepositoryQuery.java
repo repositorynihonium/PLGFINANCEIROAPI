@@ -1,12 +1,13 @@
 package br.com.plataformalancamento.repository;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import br.com.plataformalancamento.domain.LancamentoFinanceiroDomain;
 import br.com.plataformalancamento.filter.LancamentoFinanceiroFilter;
 
 public interface LancamentoFinanceiroRepositoryQuery {
 
-	public List<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter);
+	public Page<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter, Pageable pageable);
 	
 }

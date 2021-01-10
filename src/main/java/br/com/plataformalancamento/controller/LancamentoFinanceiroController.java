@@ -6,6 +6,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -62,9 +64,10 @@ public class LancamentoFinanceiroController implements Serializable {
 	}
 	
 	@GetMapping("/filtrar")
-	public List<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter) {
+	public Page<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter, Pageable pageable) {
 		System.out.println(lancamentoFinanceiroFilter);
-		return this.lancamentoFinanceiroService.filtrarLancamentoFinanceiro(lancamentoFinanceiroFilter);
+		System.out.println(pageable);
+		return this.lancamentoFinanceiroService.filtrarLancamentoFinanceiro(lancamentoFinanceiroFilter, pageable);
 	}
 	
 }
