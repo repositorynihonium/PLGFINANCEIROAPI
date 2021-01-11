@@ -124,6 +124,7 @@ public class Application implements CommandLineRunner {
 			lancamentoFinanceiroDomain02.setObservacao(null);
 			
 			lancamentoFinanceiroRepository.saveAll(Arrays.asList(lancamentoFinanceiroDomain01, lancamentoFinanceiroDomain02));
+			lancamentoFinanceiroRepository.deleteAll(Arrays.asList(lancamentoFinanceiroDomain01, lancamentoFinanceiroDomain02));
 	}
 
 }

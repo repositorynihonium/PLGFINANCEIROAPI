@@ -22,10 +22,15 @@
 		
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
+		-- [FINALIZADO] PLGFINANCEIROAPI-27202150011112
+		
+			- Responsável por reverter alterações de segurança
+			- Responsavel por implementar consulta com projection para o endpoint de Lancamento Financeiro
+		
 		-- [PENDENTE] PLGFINANCEIROAPI-48202009011000
 		
 			- Atualização de requisicoes do Postman
-			- Responsavel por implementar a autenticação com OAuth2
+			- Responsavel por implementar a autenticação regras de autenticacao para os endpoints de Lancamento Financeiro
 		
 		-- [FINALIZADO] PLGFINANCEIROAPI-032020230010922
 		

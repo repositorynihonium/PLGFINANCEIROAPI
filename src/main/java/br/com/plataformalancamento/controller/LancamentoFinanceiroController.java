@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.plataformalancamento.domain.LancamentoFinanceiroDomain;
 import br.com.plataformalancamento.filter.LancamentoFinanceiroFilter;
+import br.com.plataformalancamento.projection.LancamentoFinanceiroProjection;
 import br.com.plataformalancamento.service.LancamentoFinanceiroService;
 
 @RestController
@@ -65,9 +66,12 @@ public class LancamentoFinanceiroController implements Serializable {
 	
 	@GetMapping("/filtrar")
 	public Page<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter, Pageable pageable) {
-		System.out.println(lancamentoFinanceiroFilter);
-		System.out.println(pageable);
 		return this.lancamentoFinanceiroService.filtrarLancamentoFinanceiro(lancamentoFinanceiroFilter, pageable);
+	}
+	
+	@GetMapping(params = "projection")
+	public Page<LancamentoFinanceiroProjection> filtrarLancamentoFinanceiroProjection(LancamentoFinanceiroFilter lancamentoFinanceiroFilter, Pageable pageable) {
+		return this.lancamentoFinanceiroService.filtrarLancamentoFinanceiroProjection(lancamentoFinanceiroFilter, pageable);
 	}
 	
 }

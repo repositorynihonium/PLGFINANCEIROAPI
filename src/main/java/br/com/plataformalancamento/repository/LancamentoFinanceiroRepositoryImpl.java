@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 
 import br.com.plataformalancamento.domain.LancamentoFinanceiroDomain;
 import br.com.plataformalancamento.filter.LancamentoFinanceiroFilter;
+import br.com.plataformalancamento.projection.LancamentoFinanceiroProjection;
 
 public class LancamentoFinanceiroRepositoryImpl implements LancamentoFinanceiroRepositoryQuery {
 
@@ -53,7 +54,7 @@ public class LancamentoFinanceiroRepositoryImpl implements LancamentoFinanceiroR
 		return predicateList.toArray(new Predicate[predicateList.size()]);
 	}
 	
-	private void adicionarRestricoesPaginacao(TypedQuery<LancamentoFinanceiroDomain> lancamentoFinanceiroTypedQuery, Pageable pageable) {
+	private void adicionarRestricoesPaginacao(TypedQuery<?> lancamentoFinanceiroTypedQuery, Pageable pageable) {
 		Integer paginaAtual = pageable.getPageNumber();
 		Integer totalRegistroPagina = pageable.getPageSize();
 		Integer primeiroRegistroPagina = paginaAtual * totalRegistroPagina;
@@ -69,6 +70,29 @@ public class LancamentoFinanceiroRepositoryImpl implements LancamentoFinanceiroR
 		criteriaQuery.where(predicateList);
 		criteriaQuery.select(criteriaBuilder.count(lancamentoFinanceiroRoot));
 		return entityManager.createQuery(criteriaQuery).getSingleResult();
+	}
+
+	@Override
+	public Page<LancamentoFinanceiroProjection> filtrarLancamentoFinanceiroProjection(LancamentoFinanceiroFilter lancamentoFinanceiroFilter, Pageable pageable) {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<LancamentoFinanceiroProjection> LancamentoFinanceiroCriteriaQuery = criteriaBuilder.createQuery(LancamentoFinanceiroProjection.class);
+		Root<LancamentoFinanceiroDomain> lancamentoFinanceiroRoot = LancamentoFinanceiroCriteriaQuery.from(LancamentoFinanceiroDomain.class);
+		LancamentoFinanceiroCriteriaQuery.select(criteriaBuilder.construct(LancamentoFinanceiroProjection.class, 
+			lancamentoFinanceiroRoot.get("codigo"),
+			lancamentoFinanceiroRoot.get("favorecido").get("nomeFantasia"),
+			lancamentoFinanceiroRoot.get("produtoServicoDomain").get("nome"),
+			lancamentoFinanceiroRoot.get("dataPagamento"),
+			lancamentoFinanceiroRoot.get("valorTotal"),
+			lancamentoFinanceiroRoot.get("valorDesconto"),
+			lancamentoFinanceiroRoot.get("valorPagamento"),
+			lancamentoFinanceiroRoot.get("responsavelPagamento").get("nomeProprio"),
+			lancamentoFinanceiroRoot.get("fontePagamento").get("nomeFantasia")
+			));
+		Predicate[] predicateList = criarRestricoes(lancamentoFinanceiroFilter, criteriaBuilder, lancamentoFinanceiroRoot);
+			LancamentoFinanceiroCriteriaQuery.where(predicateList);
+		TypedQuery<LancamentoFinanceiroProjection> lancamentoFinanceiroTypedQuery = entityManager.createQuery(LancamentoFinanceiroCriteriaQuery);
+			adicionarRestricoesPaginacao(lancamentoFinanceiroTypedQuery, pageable);
+		return new PageImpl<>(lancamentoFinanceiroTypedQuery.getResultList(), pageable, recuperarTotalResultado(lancamentoFinanceiroFilter));
 	}
 
 }

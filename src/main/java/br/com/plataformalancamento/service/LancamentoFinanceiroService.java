@@ -16,6 +16,7 @@ import br.com.plataformalancamento.domain.LancamentoFinanceiroDomain;
 import br.com.plataformalancamento.domain.PessoaDomain;
 import br.com.plataformalancamento.exception.PessoaInexistenteInatvaException;
 import br.com.plataformalancamento.filter.LancamentoFinanceiroFilter;
+import br.com.plataformalancamento.projection.LancamentoFinanceiroProjection;
 import br.com.plataformalancamento.repository.CategoriaLancamentoFinanceiroRepository;
 import br.com.plataformalancamento.repository.LancamentoFinanceiroRepository;
 import br.com.plataformalancamento.utility.DateUtility;
@@ -40,8 +41,7 @@ public class LancamentoFinanceiroService implements Serializable {
 	}
 
 	public LancamentoFinanceiroDomain recuperar(Long codigo) {
-		Optional<LancamentoFinanceiroDomain> lancamentoFinanceiroDomainOptional = lancamentoFinanceiroRepository
-				.findById(codigo);
+		Optional<LancamentoFinanceiroDomain> lancamentoFinanceiroDomainOptional = lancamentoFinanceiroRepository.findById(codigo);
 		return getLancamentoFinanceiroDomain(lancamentoFinanceiroDomainOptional);
 	}
 
@@ -113,6 +113,9 @@ public class LancamentoFinanceiroService implements Serializable {
 		// Se tiver uma determinado Lancamento cadastrado no mesmo dia deve-se incrementar o sequencial
 		int contadorSequencialIdentificador = 1;
 		for(LancamentoFinanceiroDomain lancamentoFinanceiroDomainReturn : this.recuperar()) {
+			if(lancamentoFinanceiroDomainReturn.getDataUltimaAlteracao() == null) {
+				lancamentoFinanceiroDomainReturn.setDataUltimaAlteracao(new Date());
+			}
 			if(DateUtility.formatarData(new Date(), DateUtility.FORMATO_YYYYMMDD).equals(DateUtility.formatarData(lancamentoFinanceiroDomainReturn.getDataUltimaAlteracao(), DateUtility.FORMATO_YYYYMMDD))) {
 				contadorSequencialIdentificador += 1;
 			}
@@ -122,6 +125,10 @@ public class LancamentoFinanceiroService implements Serializable {
 	
 	public Page<LancamentoFinanceiroDomain> filtrarLancamentoFinanceiro(LancamentoFinanceiroFilter lancamentoFinanceiroFilter, Pageable pageable) {
 		return lancamentoFinanceiroRepository.filtrarLancamentoFinanceiro(lancamentoFinanceiroFilter, pageable);
+	}
+	
+	public Page<LancamentoFinanceiroProjection> filtrarLancamentoFinanceiroProjection(LancamentoFinanceiroFilter lancamentoFinanceiroFilter, Pageable pageable) {
+		return lancamentoFinanceiroRepository.filtrarLancamentoFinanceiroProjection(lancamentoFinanceiroFilter, pageable);
 	}
 
 }

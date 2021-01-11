@@ -311,7 +311,35 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"dataVencimento\": \"10/01/2021\",\n    \"dataPagamento\": null,\n    \"valorPagamento\": 2000.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"tipoSituacaoLancamento\": \"AGUARDANDO_PAGAMENTO\"\n}",
+							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"dataVencimento\": \"11/01/2021\",\n    \"dataPagamento\": null,\n    \"valorPagamento\": 5000.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"tipoSituacaoLancamento\": \"AGUARDANDO_PAGAMENTO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Lancamento Financeiro (Despesa Variável)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"favorecido\": {\n        \"codigo\": 1\n    },\n    \"responsavelPagamento\": {\n        \"codigo\": 4\n    },\n    \"dataVencimento\": \"11/01/2021\",\n    \"dataPagamento\": \"11/01/2021\",\n    \"valorTotal\": 5000.00,\n    \"valorPagamento\": 5000.00,\n    \"valorDesconto\": 0.00,\n    \"categoriaLancamentoFinanceiro\": {\n        \"codigo\": 1\n    },\n    \"produtoServico\": {\n        \"codigo\": 1\n    },\n    \"fontePagamento\": {\n        \"codigo\": 3\n    },\n    \"tipoSituacaoLancamento\": \"PAGO\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -368,6 +396,31 @@
 						"header": [],
 						"url": {
 							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar Lancamento Financeiro (Projection)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lancamento-financeiro?projection",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lancamento-financeiro"
+							],
+							"query": [
+								{
+									"key": "projection",
+									"value": null
+								}
+							]
 						}
 					},
 					"response": []
