@@ -12,6 +12,8 @@
 	
 	+ FUNCIONALIDADES
 	
+		- https://www.notion.so/UC003-Manter-Pessoa-e998bbb834434d059fd9c46caf6afb23
+	
 	+ ERROS
 	
 		-- [CORRIGIDO] Sistema não consegue validar erros do bean validation para as annotations @NotNull e @NotEmpty
@@ -110,7 +112,7 @@
 			
 		-- Comandos para versionar o projeto
 			git add *
-			git commit -a -m $'PLGFINANCEIROAPI-48202009011000 \n - Atualização de requisicoes do Postman'
+			git commit -a -m $'PLGFINANCEIROAPI-48202009011000 \n - Atualização de requisicoes do Postman \n - Responsavel por implementar a autenticação com OAuth2'
 			git push
 			
 	+ COMANDOS
