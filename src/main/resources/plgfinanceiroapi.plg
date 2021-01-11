@@ -182,6 +182,10 @@
 				-- Visualizar variaveis criadas
 				
 					heroku config
+					
+			-- Commitar alterações no ambiente de Produção
+			
+				git push heroku master
 		
 	+ ERROS CONHECIDOS
 	
