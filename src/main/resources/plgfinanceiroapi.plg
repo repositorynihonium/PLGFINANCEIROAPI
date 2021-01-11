@@ -186,6 +186,10 @@
 			-- Commitar alterações no ambiente de Produção
 			
 				git push heroku master
+				
+			-- Verificar Logs
+			
+				heroku log --tail
 		
 	+ ERROS CONHECIDOS
 	
