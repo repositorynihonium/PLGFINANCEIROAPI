@@ -22,6 +22,10 @@
 		
 		-- [PENDENTE] PLGFINANCEIROAPI-XXXXXXXXXXXXXX
 		
+		-- [FINALIZADO] PLGFINANCEIROAPI-32202117011114
+		
+			- Responsável por configurar de aplicação para a deploy no ambiente de Produção
+		
 		-- [FINALIZADO] PLGFINANCEIROAPI-27202150011112
 		
 			- Responsável por reverter alterações de segurança
@@ -142,6 +146,42 @@
 			
 		-- Verificar portas ocupadas
 			sudo netstat -tlpn | grep 8080
+			
+	+ PROCEDIMENTOS
+	
+		-- Implantar aplicação no ambiente de Produção (via Heroku)
+		
+			-- Criar Conta no site https://www.heroku.com/
+				- Username:		nihonium@outlook.com.br
+				- Password: 	
+				
+			-- Instalar Heroku CLI (https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+			
+				- sudo snap install --classic heroku
+				
+			-- Criar aplicação no Heroku
+			
+				heroku create plgfinanceiroapi
+				
+					-- https://git.heroku.com/plgfinanceiroapi.git
+			
+			-- Configurar Addons MySQL (databases)
+			
+				heroku addons:create jawsdb
+				
+				heroku config:get JAWSDB_URL
+				
+				-- URL criada: mysql://t4d81mz2ppo6vq4h:dygzteuj2if1zvjg@td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/sriqaq8nqc3wsetv
+			
+			-- Criar variavels no ambiente Heroku
+			
+				heroku config:set JDBC_DATABASE_MYSQL_URL=jdbc:mysql://td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/sriqaq8nqc3wsetv
+				heroku config:set JDBC_DATABASE_MYSQL_USERNAME=t4d81mz2ppo6vq4h
+				heroku config:set JDBC_DATABASE_MYSQL_PASSWORD=dygzteuj2if1zvjg
+				
+				-- Visualizar variaveis criadas
+				
+					heroku config
 		
 	+ ERROS CONHECIDOS
 	

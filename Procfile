@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -Dspring.profiles.active=producao $JAVA_OPTS -jar target/PLGFINANCEIROAPI*.jar
