@@ -151,6 +151,8 @@
 	
 		-- Implantar aplicação no ambiente de Produção (via Heroku)
 		
+			-- Esse procedimento apenas sera possivel caso se tenha um cartao de credito configurado para essa conta
+		
 			-- Criar Conta no site https://www.heroku.com/
 				- Username:		nihonium@outlook.com.br
 				- Password: 	
@@ -171,15 +173,24 @@
 				
 				heroku config:get JAWSDB_URL
 				
-				-- URL criada: 
+				heroku config
 				
-					mysql://t4d81mz2ppo6vq4h:dygzteuj2if1zvjg@td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/sriqaq8nqc3wsetv
+				-- URL criada:
+					
+					CLEARDB_DATABASE_URL: mysql://bf27303e58d4f2:280c6d21@us-cdbr-east-02.cleardb.com/heroku_d1adb82056acdb2?reconnect=true90
+					
+					-- Montar dados de conexao
+						
+						HOST:   	us-cdbr-east-02.cleardb.com
+						DATABASE:	heroku_d1adb82056acdb2
+						USERNAME:	bf27303e58d4f2
+						PASSWORD:	280c6d21
 			
 			-- Criar variavels no ambiente Heroku
 			
-				heroku config:set JDBC_DATABASE_MYSQL_URL=jdbc:mysql://td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/sriqaq8nqc3wsetv
-				heroku config:set JDBC_DATABASE_MYSQL_USERNAME=t4d81mz2ppo6vq4h
-				heroku config:set JDBC_DATABASE_MYSQL_PASSWORD=dygzteuj2if1zvjg
+				heroku config:set JDBC_DATABASE_MYSQL_URL=jdbc:mysql://td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ym7z339inkn5d790
+				heroku config:set JDBC_DATABASE_MYSQL_USERNAME=odgfabyt8nn3tjlz
+				heroku config:set JDBC_DATABASE_MYSQL_PASSWORD=wxz5z2fffxop1ac
 				
 				-- Visualizar variaveis criadas
 				
