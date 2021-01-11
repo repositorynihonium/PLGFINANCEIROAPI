@@ -128,6 +128,12 @@
 		-- Gerar TAG de versão para Produção
 		
 			git tag -a PLGFINANCEIROAPI-1.0.0-SNAPSHOT -m "PLGFINANCEIROAPI-32202117011114"
+			git push origin PLGFINANCEIROAPI-1.0.0-SNAPSHOT
+		
+		-- Excluir TAG remota
+		
+			git tag -d PLGFINANCEIROAPI-1.0.0-SNAPSHOT
+			git push --delete origin PLGFINANCEIROAPI-1.0.0-SNAPSHOT
 			
 	+ COMANDOS
 	
