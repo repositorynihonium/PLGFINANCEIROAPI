@@ -171,7 +171,9 @@
 				
 				heroku config:get JAWSDB_URL
 				
-				-- URL criada: mysql://t4d81mz2ppo6vq4h:dygzteuj2if1zvjg@td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/sriqaq8nqc3wsetv
+				-- URL criada: 
+				
+					mysql://t4d81mz2ppo6vq4h:dygzteuj2if1zvjg@td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/sriqaq8nqc3wsetv
 			
 			-- Criar variavels no ambiente Heroku
 			
